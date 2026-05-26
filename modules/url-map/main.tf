@@ -52,9 +52,20 @@ resource "google_compute_url_map" "this" {
 
       dynamic "path_rule" {
         for_each = local.optional_backends
+
         content {
-          paths   = ["${path_rule.value.path_prefix}", "${path_rule.value.path_prefix}/*"]
+          paths = [
+            "${path_rule.value.path_prefix}",
+            "${path_rule.value.path_prefix}/*"
+          ]
+
           service = data.google_compute_backend_service.optional[path_rule.key].id
+
+          route_action {
+            url_rewrite {
+              path_prefix_rewrite = "/"
+            }
+          }
         }
       }
     }

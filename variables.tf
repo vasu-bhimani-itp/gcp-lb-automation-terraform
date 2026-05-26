@@ -5,8 +5,9 @@
 variable "project_id" {
   description = "GCP Project ID"
   type        = string
-  default = "devops-sandbox-452616"
+  default     = "devops-sandbox-452616"
 }
+
 
 variable "region" {
   description = "GCP Region"
