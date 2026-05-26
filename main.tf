@@ -12,10 +12,9 @@ terraform {
     }
   }
 
-  # backend "gcs" {
-  #   bucket = "YOUR_TF_STATE_BUCKET"   # <-- replace once, commit, done
-  #   prefix = "gcp-lb"
-  # }
+  backend "gcs" {
+
+  }
 }
 
 provider "google" {
